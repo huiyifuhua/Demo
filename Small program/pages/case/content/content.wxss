@@ -1,0 +1,42 @@
+/* pages/case/content/content.wxss */
+.wrap{
+	display: flex;
+	width: 100vw;
+	flex-direction: column;
+	justify-content: center;
+	background: #999;
+}
+.img{
+	margin: 20rpx auto;
+}
+.text{
+	padding: 20rpx;
+}
+.date{
+	padding-left: 20rpx;
+}
+textarea{
+	margin: 20rpx auto;
+}
+.Comment{
+	display: flex;
+
+	justify-content: flex-start;
+	padding: 20rpx;
+
+}
+.author,.comment,.time{
+	font-size: 28rpx;
+}
+.comment_img image{
+	width: 160rpx;
+	height: 160rpx;
+	border-radius: 80rpx;
+}
+.Comment_content{
+		margin-left: 30rpx;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		
+}

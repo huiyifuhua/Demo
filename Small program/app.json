@@ -1,0 +1,73 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/server/server",
+		"pages/server/content/content",
+		"pages/case/case",
+		"pages/case/content/content",
+		"pages/contact/contact",
+		"pages/login/login",
+		"pages/news/news",
+		"pages/news/content/content",
+		"pages/search/search",
+		"pages/introduce/introduce",
+		"pages/user/user",
+		"pages/record/record",
+		"pages/gohome/gohome"
+	
+	],
+	"window": {
+		"backgroundTextStyle": "dark",
+		"navigationBarBackgroundColor": "#87CEFA",
+		"navigationBarTitleText": "主页",
+		"navigationBarTextStyle": "white",
+		"enablePullDownRefresh":true,
+		"backgroundColor":"#eeeeee"
+	},
+	"style": "v2",
+	"sitemapLocation": "sitemap.json",
+	"tabBar": {
+	"selectedColor": "#ff0000",
+		"list": [
+			{
+			"pagePath": "pages/index/index",
+			"text": "首页",
+			"iconPath": "/Images/home.png",
+			"selectedIconPath": "/Images/home1.png"
+
+		},
+			{
+				"pagePath": "pages/server/server",
+				"text": "服务",
+				"iconPath": "/Images/server.png",
+				"selectedIconPath": "/Images/server1.png"
+			},
+				{
+					"pagePath": "pages/case/case",
+					"text": "案例",
+					"iconPath": "/Images/show.png",
+					"selectedIconPath": "/Images/show1.png"
+				
+				},
+					{
+						"pagePath": "pages/contact/contact",
+						"text": "联系",
+							"iconPath": "/Images/contact.png",
+							"selectedIconPath": "/Images/contact1.png"
+					
+					},
+					{
+						"pagePath": "pages/user/user",
+						"text": "我们",
+						"iconPath": "/Images/contact.png",
+						"selectedIconPath": "/Images/contact1.png"
+					}
+
+		]
+	},
+	"permission": {
+		"scope.userLocation": {
+			"desc": "你的位置信息将用于小程序位置接口的效果展示"
+		}
+	}
+}

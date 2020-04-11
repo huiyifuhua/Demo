@@ -1,0 +1,19 @@
+/* pages/introduce/introduce.wxss */
+
+.wrap{
+width: 90%;
+margin: 0 auto;
+}
+.title{
+	text-align: center;
+	padding: 30rpx 0;
+}
+image{
+	margin-bottom: 30rpx;
+}
+.address{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30rpx 0;
+}

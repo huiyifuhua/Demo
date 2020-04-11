@@ -1,0 +1,13 @@
+<!--pages/server/server.wxml-->
+<view class="wrap">
+
+<view class="content">
+		<view class="server_list" wx:for="{{content}}" wx:key="Id"> 
+		<navigator url="/pages/server/content/content?Id={{item.Id}}">
+		<image src="{{item.Img}}"></image>
+		<view class="text">{{item.Nav}}</view>
+		</navigator>
+	</view>
+</view>
+
+</view>

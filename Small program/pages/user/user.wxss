@@ -1,0 +1,8 @@
+/* pages/user/user.wxss */
+.title{
+	text-align: left;
+}
+image{
+	width: 300rpx;
+	height: 300rpx;
+}

@@ -1,0 +1,5 @@
+/* pages/news/content/content.wxss */
+.warp{
+	width: 80%;
+	margin: 0 auto;
+}

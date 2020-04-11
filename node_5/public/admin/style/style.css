@@ -1,0 +1,167 @@
+/*阿里小图标字体使用*/
+@font-face {
+  font-family: 'iconfont';
+  /* project id 1515574 */
+  src: url('//at.alicdn.com/t/font_1515574_g705na6ki4d.eot');
+  src: url('//at.alicdn.com/t/font_1515574_g705na6ki4d.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_1515574_g705na6ki4d.woff2') format('woff2'), url('//at.alicdn.com/t/font_1515574_g705na6ki4d.woff') format('woff'), url('//at.alicdn.com/t/font_1515574_g705na6ki4d.ttf') format('truetype'), url('//at.alicdn.com/t/font_1515574_g705na6ki4d.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: 'iconfont';
+  font-style: normal;
+  font-size: 14px;
+  display: inline-block;
+}
+/*【清除默认样式】*/
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/*【公共函数】*/
+/*【后台系统界面样式】*/
+.admin_left {
+  height: 100vh;
+  width: 240px;
+  background: #876a98;
+  float: left;
+}
+.admin_left .top {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  line-height: 70px;
+  height: 70px;
+  background: #876a98;
+}
+.admin_left .center {
+  padding: 0 20px;
+}
+.admin_left .center:before {
+  height: 0;
+  content: "";
+  display: block;
+  border-top: 1px solid #ffffff;
+  transform: scale(1, 0.3);
+}
+.admin_left .center ul {
+  color: #f4f2f6;
+}
+.admin_left .center ul li a {
+  display: block;
+  line-height: 40px;
+  position: relative;
+}
+.admin_left .center ul li a .iconfont {
+  position: absolute;
+  left: 0;
+}
+.admin_left .center ul li a span {
+  margin-left: 30px;
+}
+.admin_left .center ul li a .more {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  margin-top: -3px;
+  right: 0;
+  transition: all 200ms;
+}
+.admin_left .center ul .active a .more {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotate(135deg);
+  position: absolute;
+  top: 50%;
+  margin-top: -3px;
+  right: 0;
+  margin-top: -6px;
+}
+.admin_left .center ul .active {
+  color: #ffffff;
+}
+.admin_left .center ul li ul {
+  display: none;
+}
+.admin_left .center ul li ul li {
+  text-indent: 30px;
+  line-height: 35px;
+  transition: background 200ms;
+}
+.admin_left .center ul li ul li:hover {
+  background: #ab97b7;
+  color: #ffffff;
+}
+.admin_right {
+  height: 100vh;
+  background: white;
+  margin-left: 240px;
+}
+.admin_right {
+  height: 100vh;
+  position: relative;
+}
+.admin_right .top {
+  height: 90px;
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 999;
+  background: white;
+}
+.admin_right .line1 {
+  height: 50px;
+  padding: 0 10px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 999;
+  background: white;
+  position: relative;
+  border: 1px solid #eee;
+}
+.admin_right .line1 .out {
+  padding: 5px 10px;
+  border: 1px solid #aaa;
+  color: #555;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 5px;
+}
+.admin_right .line2 {
+  border-top: 2px solid #f8f8f8;
+  background: white;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03882353);
+}
+.admin_right .line2 h5 {
+  float: left;
+}
+.admin_right .line2 span {
+  float: right;
+  color: #777;
+}
+.admin_right .main {
+  position: relative;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: 90px;
+  background: #f8f8f8;
+}

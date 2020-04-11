@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+</head>
+<body>
+
+
+
+
+
+
+    <div class="login">
+        用户名：<input type="text" class="Uname"><br>
+        密码：<input type="text" class="Upwd"><br>
+        <button>登录</button>
+    </div>
+
+    <script>
+        var btn=document.querySelector(".login button");
+        btn.onclick=function () {
+            var user=document.querySelector(".Uname").value;
+            var pwd=document.querySelector(".Upwd").value;
+            var ajax=new XMLHttpRequest();
+            ajax.open("post","/UserLogin",true);
+            ajax.setRequestHeader("content-type","application/x-www-form-urlencoded")
+            ajax.send("Xname="+user+"&Xpwd="+pwd);
+            ajax.onreadystatechange=function () {
+                if(ajax.readyState==4&&ajax.status==200){
+                    if(ajax.responseText=="登录成功"){
+                        location.href="/admin/";
+                    }else{
+                        alert(ajax.responseText);
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

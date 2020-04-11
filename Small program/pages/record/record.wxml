@@ -1,0 +1,40 @@
+<!--pages/record/record.wxml-->
+<view>
+	<form bindsubmit="add">
+		<view>
+			<view><text>公司名称:</text>
+					<input name="company"></input>
+			</view>
+			<view>联系人:
+					<input name="people"></input>
+			</view>
+			<view>电话号码:
+					<input name="phone"></input>
+			</view>
+
+			<view>邮箱:
+					<input name="email"></input>
+			</view>
+			<view>地址:
+					<input name="address"></input>
+			</view>
+
+			<view>详细需求:
+				<textarea name="txt">
+				</textarea>
+			</view>
+
+			<view>
+			<image wx:for="{{img}}" wx:key="index" src="{{item}}"></image>
+				<button bindtap="openImg" size="mini">上传图片</button>
+			</view>
+
+		</view>
+
+
+		<button form-type="submit">提交</button>
+	</form>
+
+
+
+</view>

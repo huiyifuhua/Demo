@@ -1,0 +1,31 @@
+<!--pages/introduce/introduce.wxml-->
+<view class="wrap">
+	<view class="title">{{list["标题"]}}</view>
+	<image src="{{list.Img}}"></image>
+	<rich-text nodes="{{list['公司介绍']}}"></rich-text>
+<view class="address">
+		<view>{{list["公司地址"]}}</view>
+		<view>{{list["公司名称"]}}</view>
+</view>
+	<view>联系电话:{{list["客服电话号码1"]}}</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

@@ -1,0 +1,17 @@
+<!--pages/case/case.wxml-->
+<view class="wrap">
+<!-- 导航部分 -->
+<view class="nav" scroll-y>
+	<view wx:for="{{listData}}" wx:key="Id" class="{{index==selectNav?'active':''}}" bind:touchstart="clickNav"  data-NavIndex="{{index}}">{{item.Nav}}</view>
+</view>
+
+<view class="list"scroll-y >
+	<navigator wx:for="{{ListContent.list}}" wx:key="Id" 
+	url="/pages/case/content/content?Id={{item.Id}}"> 
+		<image src="{{item.Img}}"/>
+		<text>{{item.Title}}</text>
+		<button size="mini">立即查看</button>
+	</navigator>
+</view>
+<image class="loading" hidden="{{loading}}" src="/Images/placeholder.svg"></image>
+</view>

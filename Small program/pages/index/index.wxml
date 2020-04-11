@@ -1,0 +1,87 @@
+<!--index.wxml-->
+<view class="input">
+	<input placeholder="输入关键词搜索" style="padding-left:43%;" name="input" confirm-type="search" bindconfirm="searchBtn" ></input>
+</view>
+<view class="binner">
+	<swiper indicator-dots="true" 
+	indicator-active-color="red"
+	autoplay="true"
+	interval="3000"
+	>
+	
+<swiper-item wx:for="{{banner}}" wx:key="Id">
+	<image src="{{item.Img}}" mode="widthFix" style="width:100%"></image>
+</swiper-item>
+
+	</swiper>
+</view>
+
+<!-- nav -->
+<view class="nav">
+	<navigator url="/pages/server/server" open-type="switchTab" >
+	  <image src="/Images/server.png" style="width:50rpx;height:50rpx;"></image>
+		<text>项目服务</text>
+	</navigator>
+	<navigator url="/pages/case/case" open-type="switchTab">
+	  <image src="/Images/show.png" style="width:50rpx;height:50rpx;"></image>
+		<text>案例展示</text>
+	</navigator>
+
+	<navigator url="/pages/news/news" >
+	  <image src="/Images/show.png" style="width:50rpx;height:50rpx;"></image>
+		<text>新闻公告</text>
+	</navigator>
+
+	<navigator url="/pages/introduce/introduce" >
+	  <image src="/Images/show.png" style="width:50rpx;height:50rpx;"></image>
+		<text>公司简介</text>
+	</navigator>
+</view>
+<view style="border-top:2rpx solid #eee;font-size:28rpx;color:gray; padding:10rpx 0 20rpx 40rpx; border-bottom:10rpx solid #eee;">
+公告展示
+</view>
+
+<!-----server----->
+<view class="server_nav">
+<view style="border-left:8rpx solid #7fb9f0;height:100%;line-height:74rpx;">项目服务</view>
+<navigator url="/pages/server/server" open-type="switchTab">more</navigator>
+</view>
+<view class="server">
+		<view class="server_list" wx:for="{{server}}" wx:key="Id"> 
+				<navigator url="/pages/server/content/content?Id={{item.Id}}">
+				<image src="{{item.Img}}"></image>
+				<view class="text">{{item.Nav}}</view>
+				</navigator>
+			</view>
+</view>
+
+<view class="server_nav">
+<view style="border-left:8rpx solid #7fb9f0;height:100%;line-height:74rpx;">案例展示</view>
+<navigator url="/pages/case/case" open-type="switchTab">more</navigator>
+</view>
+
+<view class="case">
+		<view class="server_list" wx:for="{{caseList}}" wx:key="Id"> 
+				<navigator url="/pages/case/content/content?Id={{item.Id}}">
+				<image src="{{item.Img}}"></image>
+				<view class="text">{{item.Title}}</view>
+				</navigator>
+			</view>
+</view>
+
+<view class="server_nav">
+<view style="border-left:8rpx solid #7fb9f0;height:100%;line-height:74rpx;">新闻公告</view>
+<navigator url="/pages/news/news" >more</navigator>
+</view>
+<view>
+	<view wx:for="{{newsList}}" wx:key="Id" class="news">
+		<navigator url="/pages/news/content/content?Id={{item.Id}}">
+		<image src="{{item.Img}}" class="news_img"></image>
+		<view class="news_content">
+			<view>{{item.Title}}</view>
+			<view class="news_date">{{item.Date}}</view>
+		</view>
+	</navigator>
+	</view>
+</view>
+

@@ -1,0 +1,6 @@
+<!--pages/server/content/content.wxml-->
+<view>
+<image  style="margin:0 auto;display:block" src="{{content.Img}}"></image>
+	<view style="padding-left:40rpx;" class="title">{{content.Title}}</view>
+		<rich-text  nodes="{{content.PageContent}}"></rich-text>
+</view>

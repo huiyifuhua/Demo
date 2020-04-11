@@ -1,0 +1,11 @@
+<!--pages/search/search.wxml-->
+
+
+<view>共搜到{{list.length}}条数据</view>
+<view class="list"  wx:if="{{list.length>0}}">
+	<navigator url="/pages/case/content/content?Id={{item.Id}}" wx:for="{{list}}" wx:key="Id">
+		{{item.Title}}
+	</navigator>
+	
+</view>
+<view wx:else>没有找到相关数据</view>

@@ -1,0 +1,8 @@
+<!--pages/login/login.wxml-->
+<image src="{{img}}" style="width:160rpx;height:160rpx;display:block;margin:40rpx auto" mode="widthFix"></image>
+<button 
+	open-type="getUserInfo"
+	bindgetuserinfo="getUser"
+	bindtap="loading"
+
+>一键登录</button>

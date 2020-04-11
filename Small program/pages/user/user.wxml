@@ -1,0 +1,16 @@
+<!--pages/user/user.wxml-->
+<view class="user">
+	<!-- 登录后的图像 -->
+	<view class="user_img" style="height:400rpx;background:pink;">
+		<view class="title">用户名:{{name}}</view>
+		<image src="{{img}}"></image>
+	
+	
+	</view>
+	<!--发布需求 预约上门  -->
+
+	<view bindtap="toLink" data-url="/pages/record/record">立即上门</view>
+	<view bindtap="toHome" data-url="/pages/gohome/gohome">预约记录</view>
+
+
+</view>

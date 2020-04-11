@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{ font-size: 14px;}
+        table{ color: #333; width: 100%;
+            background: white;
+            padding:20px 20px;
+        }
+        table td{padding:10px 5px; line-height: 35px}
+        table input,table textarea,table select{
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 2px;
+            border:1px solid #ccc;
+            outline: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        table input:focus,table textarea:focus,table select:focus{
+            border:1px solid  #48b6f2;
+            box-shadow: 0 0 0 3px rgba(72, 182, 242, 0.34);
+        }
+        table select{ padding:0;padding-left:10px;}
+        table input,table select{
+            height: 35px;
+            line-height: normal;
+        }
+        table input[type='file']{
+            line-height: normal;
+            padding:5px;
+            height: auto;
+        }
+        table textarea{
+            height:80px;
+        }
+        .logo_img{
+            float: left;
+            margin-right: 16px;
+            padding: 5px;
+            background: white;
+            border:1px solid #ccc;
+            border-radius: 3px;
+        }
+		 table input[type='radio']{
+            width: auto;
+            line-height: normal;
+            height: auto;
+            padding: 0;
+        }
+        .reset{
+            display: inline-block;
+            padding:5px 20px;
+            background: #666;
+            color:white;
+            border-radius: 3px;
+            border:1px solid #444;
+        }
+        .sub{
+            display: inline-block;
+            padding:5px 20px;
+            background: #48b6f2;
+            color:white;
+            border-radius: 3px;
+            border:1px solid #4b8abf;
+        }
+        .sub:hover{
+            background: #398dbd;
+        }
+        </style>
+</head>
+<body>
+    <form action="/setNav" method="post" enctype="multipart/form-data">
+        <table border="0">
+            <tr>
+                <td width="100">父栏目</td>
+                <td>
+                    <select name="Path" >
+                        <option value="top">顶级栏目</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>栏目名称</td>
+                <td><input type="text" name="Nav"></td>
+            </tr>
+            <tr>
+                <td>栏目标题</td>
+                <td><input type="text" name="Title"></td>
+            </tr>
+            <tr>
+                <td>栏目关键字</td>
+                <td><input type="text" name="Keywords"></td>
+            </tr>
+			 <tr>
+                <td>前端路由地址</td>
+                <td><input type="text" name="Url" placeholder="以 / 斜杆开头"></td>
+            </tr>
+            <tr>
+                <td valign="top">栏目描述</td>
+                <td><textarea name="Description"></textarea></td>
+            </tr>
+            <tr>
+                <td>缩略图</td>
+                <!--multiple 表示可以 传多张图片-->
+                <td><input type="file" multiple name="Img"></td>
+            </tr>
+            <tr>
+                <td>排序</td>
+                <td><input type="text" name="Sort"> </td>
+            </tr>
+			<tr>
+                <td>显示状态</td>
+                <td>
+                    <input type="radio" name="Status" value="0">隐藏
+                    <input type="radio" name="Status" value="1">显示
+                    <input type="radio" name="Status" value="2">为顶级导航时不显示
+                </td>
+            </tr>
+			<tr>
+				<td valign="top">栏目页面内容</td>
+				<td style=" line-height: normal">
+				<!-- 加载编辑器的容器 -->
+                    <script id="container" name="PageContent" type="text/plain"></script>
+                    <!-- 配置文件 -->
+                    <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+                    <!-- 编辑器源码文件 -->
+                    <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                        var ue = UE.getEditor('container',{
+                            initialFrameWidth:"100%", //默认宽度
+                            initialFrameHeight:100//默认高度
+                        });
+                    </script>
+				</td>
+			</tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button class="sub">确认添加</button>
+                    <button type="reset" class="reset">重置</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+<script>
+    //1.查询所有栏目 并放入select标签中
+    var ajax=new XMLHttpRequest();
+    ajax.open("get","/getNav",false);
+    ajax.send();
+    var data=JSON.parse(ajax.responseText);
+    for(var i=0;i<data.length;i++){
+        var option=document.createElement("option");
+        var len=data[i].Path.split(",").length;
+        var str="";
+        for(var j=1;j<len;j++){
+            str=str+"&nbsp;&nbsp;&nbsp;&nbsp;"
+        }
+        option.innerHTML=str+data[i].Nav;
+        option.value=data[i].Path;
+        //选中select标签 并把创建的option标签添加进去
+        document.querySelector("[name='Path']").appendChild(option)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!--pages/contact/contact.wxml-->
+	<view class="bg">
+		<image src="{{list.Img}}" style="width:100%"></image>
+	</view>
+<view class="wrap">
+	<view>
+		<view class="header">
+			<image src="{{list.Logo}}" style="width:100rpx;height:100rpx"></image>
+			<text class="title">{{list["公司名称"]}}</text>
+		</view>
+		<view class="content">
+			<view class="list1">
+						<view class="list1_view">
+								<image src="/Images/phone.png" class="img_phone"></image>
+								<text class="phone">{{list["客服电话号码1"]}}</text>
+						</view>
+						<view bindtap="call" class="call">拨打电话</view>
+			</view>	
+				
+			<view class="list1">
+						<view class="list1_view">
+								<image src="/Images/phone.png" class="img_phone"></image>
+								<text class="phone">{{list["客服电话号码2"]}}</text>
+						</view>
+						<view bindtap="call1" class="call">拨打电话</view>
+			</view>
+
+
+
+			<view class="list1">
+				<view class="list1_view">
+					<image src="/Images/address.png" class="img_phone"></image>
+					<text class="phone">{{list["公司地址"]}}</text>
+				</view>
+						<view bindtap="address" class="call">地图导航</view>
+				</view>
+						
+			</view>
+
+		<view class="btn">
+		<button bindtap="save" size="mini">保存到通讯录</button>
+		<button open-type="share" size="mini">分享给好友</button>
+		</view>
+		<button open-type="contact" class="contact" size="">客服聊天</button>
+
+			
+	</view>
+
+
+
+</view>

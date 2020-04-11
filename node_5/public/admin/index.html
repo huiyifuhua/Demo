@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="js/jquery-3.4.1.js"></script>
+</head>
+<body>
+    <div class="admin_left">
+        <div class="top">云系统</div>
+        <div class="center">
+            <ul>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe637;</i>
+                        <span>基本设置</span>
+                        <i class="more"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/admin/info.html" target="myWindow" onclick="location.hash='/admin/info.html';loadURL()">
+                                系统设置
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe60f;</i>
+                        <span>栏目管理</span>
+                        <i class="more"></i>
+                    </a>
+                    <ul>
+                        <li><a href="/admin/addNav.html" target="myWindow" onclick="location.hash='/admin/addNav.html';loadURL()">栏目添加</a></li>
+                        <li><a href="/admin/navlist.html" target="myWindow" onclick="location.hash='/admin/navlist.html';loadURL()">栏目列表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe619;</i>
+                        <span>内容管理</span>
+                        <i class="more"></i>
+                    </a>
+                    <ul>
+                        <li><a  href="/admin/addContent.html" target="myWindow" onclick="location.hash='/admin/addContent.html';loadURL()">内容添加</a></li>
+                        <li><a  href="/admin/conentlist.html" target="myWindow" onclick="location.hash='/admin/conentlist.html';loadURL()">内容列表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe619;</i>
+                        <span>管理员</span>
+                        <i class="more"></i>
+                    </a>
+                    <ul>
+                        <li><a href=""></a></li>
+                        <li><a href="">管理员设置</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="admin_right">
+        <div class="top">
+            <div class="line1">
+                <a href="/clearLogin" class="out">退出登录</a>
+            </div>
+            <div class="line2">
+                <h5></h5>&nbsp;&nbsp;
+                <strong style="font-weight: normal" onclick="history.back()">返回</strong>
+                <span></span>
+            </div>
+        </div>
+        <div class="main">
+            <!--
+            iframe 子窗口标签，作用就是在当前页面中 再加载一个其他页面进行显示
+            src里面写 当前这个子窗口要显示的页面
+            name用来设置给子窗口加名字
+            frameborder="0"  把子窗口标签默认的边框设置0
+            -->
+            <iframe id="myW" name="myWindow" src="" frameborder="0" width="100%" height="100%">
+            </iframe>
+            <script>
+                //网页刷新时 获取#号后面的地址 并加载到 iframe标签上
+                //location.hash.replace('#','');
+                function loadURL() {
+                    var url=location.hash.replace('#','');
+                    document.querySelector("#myW").src=url;
+                    if(url){
+                        var link=$("[href='"+url+"']");
+                        var linkParent=link.closest("ul").prev().children("span")
+                        console.log(link.closest("ul"))
+                        $(".line2 h5").text(link.text());
+                        $(".line2 span").html("位置："+linkParent.text().trim()+"&nbsp;/&nbsp;"+link.text().trim());
+                    }
+                }
+                loadURL();
+            </script>
+        </div>
+    </div>
+
+<script>
+    $(".out").click(function () {
+        if(confirm("你确定要退出吗？")){
+
+        }else{
+            event.preventDefault();
+            //清除事件默认行为 让链接不会发生跳转 这样就不会清除登录状态
+        }
+    })
+    //1.选中含有ul菜单的li标签里面的a
+    var admin_left_nav=$(".admin_left .center li").has("ul").children("a");
+    admin_left_nav.click(function(){
+        $(this).parent().siblings().children("ul").slideUp(100);
+        $(this).next("ul").slideToggle(100); //让ul菜单隐藏或显示
+        $(this).parent().toggleClass("active").siblings().removeClass("active")
+    });
+
+</script>
+</body>
+</html>

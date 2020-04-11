@@ -1,0 +1,24 @@
+<!--pages/case/content/content.wxml-->
+<view class="wrap">
+	<view class="img">
+		<image src="{{Content.Img}}"></image>
+	</view>
+	<rich-text nodes="{{Content.Content}}" class="text"></rich-text>
+	<text class="date">{{Content.Date}}</text>
+
+	<form bind:submit="addContent">
+		<textarea name="Content_content" style="border:2rpx solid #666" placeholder="请输入">
+
+		</textarea>
+		<input hidden="true" name="Comment_contentId" value="{{Content.Id}}"></input>
+		<button size="mini" style="margin:20rpx auto;display:block;width:300rpx;" form-type="submit">提交</button>
+	</form>
+	<view wx:for="{{CommentList}}" wx:key="Id" class="Comment">
+			<view class="comment_img"><image src="{{item.img}}" mode="widthFix"></image></view>
+			<view class="Comment_content">
+						<view class="author">品论人:{{item.name}}</view>
+						<view class="comment">品论内容:{{item.c_Content}}</view>
+						<view class="time">品论时间:{{item.time}}</view>
+			</view>
+	</view>
+</view>

@@ -1,0 +1,13 @@
+<!--pages/news/news.wxml-->
+<view>
+	<view wx:for="{{newsList}}" wx:key="Id" class="news">
+		<navigator url="/pages/news/content/content?Id={{item.Id}}">
+		
+		<image src="{{item.Img}}" class="news_img"></image>
+		<view class="news_content">
+			<view>{{item.Title}}</view>
+			<view class="news_date">{{item.Date}}</view>
+		</view>
+	</navigator>
+	</view>
+</view>

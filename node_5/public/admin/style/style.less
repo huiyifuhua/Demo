@@ -1,0 +1,177 @@
+/*阿里小图标字体使用*/
+@font-face {
+  font-family: 'iconfont';  /* project id 1515574 */
+  src: url('//at.alicdn.com/t/font_1515574_g705na6ki4d.eot');
+  src: url('//at.alicdn.com/t/font_1515574_g705na6ki4d.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1515574_g705na6ki4d.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1515574_g705na6ki4d.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1515574_g705na6ki4d.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1515574_g705na6ki4d.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family: 'iconfont';
+  font-style: normal;
+  font-size: 14px;
+  display: inline-block;
+}
+
+/*【清除默认样式】*/
+*{
+  margin:0;
+  padding:0;
+  list-style: none;
+  font-size: 14px;
+}
+a{
+  color: inherit;
+  text-decoration: none;
+}
+/*【公共函数】*/
+//1.生成箭头的
+.JianTou(@deg,@color,@size,@d){
+  display: block;
+  width:@size;height:@size;
+  border:1px solid @color;
+  border-left-color: transparent;
+  border-bottom-color:transparent;
+  transform: rotate(@deg);
+  position: absolute;
+  top:50%;
+  margin-top:-@size/2px;
+  @{d}:0;
+}
+
+/*【后台系统界面样式】*/
+@admin_left_bg: #876a98;
+@admin_left_width:240px;
+@admin_left_top_height:70px;
+@admin_left_top_bg:@admin_left_bg;
+@admin_left_center_text_indent:30px;
+@admin_left_center_line_height:40px;
+.admin_left{
+  height: 100vh;
+  width: @admin_left_width;
+  background:@admin_left_bg;
+  float: left;
+}
+.admin_left .top{
+   color:white;
+   font-size: 20px;
+   text-align: center;
+   line-height: 70px;
+   height: @admin_left_top_height;
+   background:@admin_left_top_bg;
+}
+.admin_left .center{
+  padding:0 20px;
+}
+.admin_left .center:before{
+  height: 0;
+  content: "";
+  display: block;
+  border-top:1px solid lighten(@admin_left_bg,95%);
+  transform: scale(1,0.3);
+}
+.admin_left .center ul{
+  color:lighten(@admin_left_bg,45%);
+}
+.admin_left .center ul li a{
+  display: block;
+  line-height: @admin_left_center_line_height;
+  position: relative;
+}
+.admin_left .center ul li a .iconfont{
+  position: absolute;
+  left:0;
+}
+.admin_left .center ul li a span{
+  margin-left:@admin_left_center_text_indent;
+}
+.admin_left .center ul li a .more{
+  .JianTou(45deg,fade(white,50%),6px,right);
+  transition: all 200ms;
+}
+.admin_left .center ul .active a .more{
+  .JianTou(135deg,fade(white,90%),6px,right);
+  margin-top:-6px;
+}
+.admin_left .center ul .active{
+  color:lighten(@admin_left_bg,90%);
+}
+.admin_left .center ul li ul{
+  display: none;
+}
+.admin_left .center ul li ul li{
+  text-indent: @admin_left_center_text_indent;
+  line-height:@admin_left_center_line_height - 5px;
+  transition:background 200ms;
+}
+.admin_left .center ul li ul li:hover{
+  background: lighten(@admin_left_bg,15%);
+  color:lighten(@admin_left_bg,75%);
+}
+.admin_right{
+  height: 100vh;
+  background:white;
+  margin-left:@admin_left_width;
+}
+
+@admin_right_top_height:@admin_right_top_line1_height+@admin_right_top_line2_height;
+@admin_right_top_line1_height:50px;
+@admin_right_top_line2_height:40px;
+@admin_right_main_background: #f8f8f8;
+.admin_right{
+  height:100vh;
+  position: relative;
+}
+.admin_right .top{
+  height:@admin_right_top_height;
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 999;
+  background: white;
+}
+.admin_right .line1{
+  height:@admin_right_top_line1_height;
+  padding:0 10px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 999;
+  background: white;
+  position: relative;
+  border:1px solid #eee;
+}
+.admin_right .line1 .out{
+  padding:5px 10px;
+  border:1px solid #aaa;
+  color:#555;
+  position: absolute;
+  right:20px;
+  top:50%; transform: translate(0,-50%);
+  border-radius: 5px;
+}
+.admin_right .line2{
+  border-top:2px solid @admin_right_main_background;
+  background: white;
+  height: @admin_right_top_line2_height;
+  line-height: @admin_right_top_line2_height;
+  padding:0 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.038823529411764705);
+}
+.admin_right .line2 h5{
+  float: left;
+}
+.admin_right .line2 span{
+  float: right;
+  color:#777;
+}
+.admin_right .main{
+  position: relative;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: @admin_right_top_height;
+  background: @admin_right_main_background;
+}
+
+

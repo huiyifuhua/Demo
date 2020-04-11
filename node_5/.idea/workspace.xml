@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c5151e4c-b6ae-44b1-9562-3c3e2bb02e40" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>req.hostname</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>req.headers.host</replace>
+    </replaceStrings>
+  </component>
+  <component name="ProjectId" id="1WSKez1OJbwuFNWbpW3xfzQkd0n" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/node_2/routes/index.js" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\node_2\public\utf8-php" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5151e4c-b6ae-44b1-9562-3c3e2bb02e40" name="Default Changelist" comment="" />
+      <created>1574156670511</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574156670511</updated>
+      <workItem from="1574156671978" duration="1640000" />
+      <workItem from="1574211882704" duration="25560000" />
+      <workItem from="1574298436223" duration="9409000" />
+      <workItem from="1574315481650" duration="12221000" />
+      <workItem from="1574383999972" duration="23580000" />
+      <workItem from="1574643610989" duration="27792000" />
+      <workItem from="1574729776142" duration="24792000" />
+      <workItem from="1574816929696" duration="25951000" />
+      <workItem from="1574902957033" duration="20073000" />
+      <workItem from="1574989344271" duration="25992000" />
+      <workItem from="1575077281623" duration="22357000" />
+      <workItem from="1575248271032" duration="2021000" />
+      <workItem from="1576840211250" duration="42000" />
+      <workItem from="1577063267473" duration="113000" />
+      <workItem from="1579137659225" duration="81000" />
+      <workItem from="1579138152253" duration="205000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

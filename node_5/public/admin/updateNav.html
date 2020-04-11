@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{ font-size: 14px;}
+        table{ color: #333; width: 100%;
+            background: white;
+            padding:20px 20px;
+        }
+        table td{padding:10px 5px; line-height: 35px}
+        table input,table textarea,table select{
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 2px;
+            border:1px solid #ccc;
+            outline: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        table input:focus,table textarea:focus,table select:focus{
+            border:1px solid  #48b6f2;
+            box-shadow: 0 0 0 3px rgba(72, 182, 242, 0.34);
+        }
+        table select{ padding:0;padding-left:10px;}
+        table input,table select{
+            height: 35px;
+            line-height: normal;
+        }
+        table input[type='file']{
+            line-height: normal;
+            padding:5px;
+            height: auto;
+        }
+        table textarea{
+            height:80px;
+        }
+        .logo_img{
+            float: left;
+            margin-right: 16px;
+            padding: 5px;
+            background: white;
+            border:1px solid #ccc;
+            border-radius: 3px;
+        }
+        .reset{
+            display: inline-block;
+            padding:5px 20px;
+            background: #666;
+            color:white;
+            border-radius: 3px;
+            border:1px solid #444;
+        }
+        .sub{
+            display: inline-block;
+            padding:5px 20px;
+            background: #48b6f2;
+            color:white;
+            border-radius: 3px;
+            border:1px solid #4b8abf;
+        }
+        .sub:hover{
+            background: #398dbd;
+        }
+        table input[type='radio']{
+            width: auto;
+            line-height: normal;
+            height: auto;
+            padding: 0;
+        }
+        [disabled]{ opacity: 0.5}
+        .img_fil{
+            width: 100px;
+            padding:5px;
+            border:1px solid #ddd;
+            border-radius: 3px;
+            background: white;
+            margin-top:10px;
+            margin-bottom:10px;
+        }
+        .img_fil~.img_fil{
+            margin-left: 10px;
+        }
+        </style>
+        <script src="js/jquery-3.4.1.js"></script>
+</head>
+<body>
+    <form action="/update_Nav" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="Id">
+        <table border="0">
+            <tr>
+                <td width="100">父栏目</td>
+                <td>
+                    <select name="Path"  disabled title="不可修改" style="cursor: not-allowed">
+                        <option value="top" >顶级栏目</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>栏目名称</td>
+                <td><input type="text" name="Nav" required></td>
+            </tr>
+            <tr>
+                <td>栏目标题</td>
+                <td><input type="text" name="Title"></td>
+            </tr>
+			 <tr>
+                <td>前端路由地址</td>
+                <td><input type="text" name="Url" placeholder="以 / 斜杆开头"></td>
+            </tr>
+            <tr>
+                <td>栏目关键字</td>
+                <td><input type="text" name="Keywords"></td>
+            </tr>
+            <tr>
+                <td valign="top">栏目描述</td>
+                <td><textarea name="Description"></textarea></td>
+            </tr>
+            <tr>
+                <td valign="top">缩略图</td>
+                <!--multiple 表示可以 传多张图片-->
+                <td class="ImgWrap">
+                    <input type="file" multiple name="Img"><br>
+                    <!--把原来上传的图片 地址 放在隐藏域上 再次传给服务器 让服务器进行删除-->
+                    <input type="hidden" name="old_Img">
+                </td>
+            </tr>
+            <tr>
+                <td>排序</td>
+                <td><input type="text" name="Sort"> </td>
+            </tr>
+            <tr>
+                <td>状态</td>
+                 <td>
+                    <input type="radio" name="Status" value="0">隐藏
+                    <input type="radio" name="Status" value="1">显示
+                    <input type="radio" name="Status" value="2">为顶级导航时不显示
+                </td>
+            </tr>
+			<tr>
+				<td valign="top">栏目页面内容</td>
+				<td style=" line-height: normal">
+				<!-- 加载编辑器的容器 -->
+                    <script id="container" name="PageContent" type="text/plain"></script>
+                    <!-- 配置文件 -->
+                    <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+                    <!-- 编辑器源码文件 -->
+                    <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                        var ue = UE.getEditor('container',{
+                            initialFrameWidth:"100%", //默认宽度
+                            initialFrameHeight:100//默认高度
+                        });
+                    </script>
+				</td>
+			</tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button class="sub">确认修改</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+<script>
+    //1.查询所有栏目 并放入select标签中
+    var ajax=new XMLHttpRequest();
+    ajax.open("get","/getNav",false);
+    ajax.send();
+    var data=JSON.parse(ajax.responseText);
+    for(var i=0;i<data.length;i++){
+        var option=document.createElement("option");
+        var len=data[i].Path.split(",").length;
+        var str="";
+        for(var j=1;j<len;j++){
+            //str=str+"&nbsp;&nbsp;&nbsp;&nbsp;"
+        }
+        option.innerHTML=str+data[i].Nav;
+        option.value=data[i].Path;
+        //选中select标签 并把创建的option标签添加进去
+        document.querySelector("[name='Path']").appendChild(option)
+    }
+
+    //获取地址?号上的Path数据
+    var P=location.search.split("=")[1];
+    $.ajax({
+        url:"/getNavLine",
+        data:{Path:P}, //data写向后传的数据 格式为:{数据名:数据值}
+        success:function (d) {
+
+            //console.log(d);//[{…}]  输出的是数组 里面包含一个数据，这个数据是一个对象
+            //console.log(d[0])//{Id: 21, Nav: "小学作文"}
+
+            //var arr=[11,22,33]
+            //arr[0] 取得就是11
+
+            //如果存在数据 length必定大于0
+           if(d.length>0){
+               //取查到第一条数据
+               var data=d[0];
+               //开始放数据到页面中
+               $('[name="Nav"]').val(data.Nav);
+               $('[name="Title"]').val(data.Title);
+               $('[name="Keywords"]').val(data.Keywords);
+               $('[name="Description"]').val(data.Description);
+               $('[name="Sort"]').val(data.Sort);
+               $('[name="Status"]').eq(data.Status).prop({checked:true});
+               $('[name="Id"]').val(data.Id);
+               $('[name="old_Img"]').val(data.Img);
+			   $('[name="Url"]').val(data.Url)
+				ue.ready(function() {//把内容填充到 ueditor 输入框中 需要这么写
+                    ue.setContent(data.PageContent);
+                });
+               //如果当前这条数据不是顶级栏目 就要让select标签显示 这个这条数据的父栏目
+               var PathArr=data.Path.split(",");
+               if(PathArr.length>1){//如果length大于1 说明不是顶级栏目
+                   console.log("不是顶级栏目")
+                   //取父栏目的path，就是删除最后4几位数字和逗号 就行 写法如下
+                   //"0001,0002,0003".slice(0,-5)  //输出 0001,0002
+                   var ParentPath=data.Path.slice(0,-5);
+                   $('[value="'+ParentPath+'"]').prop({selected:true})
+               }
+               //加载图片显示
+               var imgData=JSON.parse(data.Img);
+               $.each(imgData,function (k,v) {
+                   //K里面包含 循环时 数组中数据的序号
+                   //V里面包含 循环时 数组中的数据
+                   //console.log(v)//获取图片地址
+                   var img=$("<img>").prop({src:"/"+v.filename}).addClass("img_fil")
+                   $(".ImgWrap").append(img);
+               })
+           }
+        }
+    })
+
+</script>
+</body>
+</html>

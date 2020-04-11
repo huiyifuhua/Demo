@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{ font-size: 14px;}
+        table{ color: #333; width: 100%;
+            background: white;
+            padding:20px 20px;
+        }
+        table td{padding:10px 5px; line-height: 35px}
+        table input,table textarea{
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 2px;
+            border:1px solid #ccc;
+            outline: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        table input:focus,table textarea:focus{
+            border:1px solid  #48b6f2;
+            box-shadow: 0 0 0 3px rgba(72, 182, 242, 0.34);
+        }
+        table input{
+            height: 35px;
+            line-height: normal;
+        }
+        table textarea{
+            height:150px;
+        }
+        .logo_img{
+            float: left;
+            margin-right: 16px;
+            padding: 5px;
+            background: white;
+            border:1px solid #ccc;
+            border-radius: 3px;
+        }
+        .file_btn{
+            display: inline-block;
+            padding:0px 10px;
+            background: #4ed749;
+            color:white;
+            border-radius: 3px;
+            border:1px solid #399c36;
+            font-size: 12px;
+        }
+        .sub{
+            display: inline-block;
+            padding:5px 20px;
+            background: #48b6f2;
+            color:white;
+            border-radius: 3px;
+            border:1px solid #4b8abf;
+        }
+        .sub:hover{
+            background: #398dbd;
+        }
+    </style>
+</head>
+<body>
+
+<!--
+如果表单有文件上传 必须写：
+1.enctype="multipart/form-data"
+multipart/form-data 是专门用来传文件的 可以传二进制文件数据
+2.文件上传 必须使用post方法，目前这种请求的方法是最通用的文件上传
+3.action="/setInfo" 表示设置表单 提交数据的地址，
+  这个/setInfo需要我们在后端写这个接收的地址
+-->
+<form enctype="multipart/form-data" method="post" action="/setInfo"  >
+    <!--table表示表格
+        tr 表示行 里面是放列的
+        td 表示列 里面是放内容的
+    -->
+    <table border="0">
+        <tr><td width="130">网站标题</td><td><input type="text" name="title"></td></tr>
+        <tr><td>网站关键字</td><td><input type="text" name="keywords"></td></tr>
+        <tr><td valign="top">网站描述</td><td><textarea name="description"></textarea></td></tr>
+        <tr><td valign="top">Logo图片</td><td>
+            <label>
+                <!--可以把图片的地址用一个 标签存起来
+                  我们可以使用 隐藏并携带数据的标签 这种标签叫做隐藏域
+                  就是在页面中不显示 但是会携带数据
+                -->
+                <input type="hidden" name="old_img">
+                <img src="" width="200" class="logo_img">
+                <!-- onchange 当input标签的value值发生改变时候 就会触发该事件-->
+                <input type="file" name="logo"  onchange="abc()" style="display: none">
+                <span class="file_btn">修改图片</span>
+                <script>
+                    function abc() {
+                        //alert("input的value发生了改变")
+                        document.querySelector(".file_btn").innerText="你已经选了图片！"
+                    }
+                </script>
+            </label>
+        </td></tr>
+		<tr><td>客服电话号码1</td><td><input type="text" name="d1"></td></tr>
+		<tr><td>客服电话号码2</td><td><input type="text" name="d2"></td></tr>
+		<tr><td>公司地址</td><td><input type="text" name="d3"></td></tr>
+		<tr><td>公司名称</td><td><input type="text" name="d4"></td></tr>
+		<tr><td>微信号码</td><td><input type="text" name="d5"></td></tr>
+		<tr><td>QQ号码</td><td><input type="text" name="d6"></td></tr>
+		<tr><td>公司介绍</td><td style=" line-height: normal">
+                    <!-- 加载编辑器的容器 -->
+                    <script id="container" name="d7" type="text/plain"></script>
+                    <!-- 配置文件 -->
+                    <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+                    <!-- 编辑器源码文件 -->
+                    <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                        var ue = UE.getEditor('container',{
+                            initialFrameWidth:"100%", //默认宽度
+                            initialFrameHeight:100//默认高度
+                        });
+                    </script>
+		</td></tr>
+		<tr><td>推广图</td><td>
+			<label>
+               <label>
+                <!--可以把图片的地址用一个 标签存起来
+                  我们可以使用 隐藏并携带数据的标签 这种标签叫做隐藏域
+                  就是在页面中不显示 但是会携带数据
+                -->
+				<input type="hidden" name="old_img2">
+                <img src="" width="100" class="img_2img">
+                <!-- onchange 当input标签的value值发生改变时候 就会触发该事件-->
+                <input type="file" name="img2"  onchange="abc2()" style="display: none">
+                <span class="file_btn2">修改图片</span>
+                <script>
+                    function abc2() {
+                        //alert("input的value发生了改变")
+                        document.querySelector(".file_btn2").innerText="你已经选了图片！"
+                    }
+                </script>
+            </label>
+            </label>
+		</td></tr>
+		
+        <tr><td>备案号</td><td><input type="text" name="icp"> </td></tr>
+        <tr><td></td><td><button class="sub">提交</button></td></tr>
+    </table>
+</form>
+
+<script>
+    //后端返回的json数据一般是 字符串类型的json
+    //比如：{"a":1,"b":2}  这种属性带双引号 json就是字符串的json
+
+    //如果要使用 字符串的json，一般都需要转成json对象
+    //比如：{a:1,b:2} 这种属性不带双引号的 json 就是对象的json
+
+    //把json字符串 转成 json对象： 使用JSON.parse(写后台接收json字符串)
+    //console.log(JSON.parse('{"Id":1,"标题":2}'));
+    //输出对象 {Id: 1, 标题: 2}
+
+    //把json对象 转成 json字符串：
+    //console.log(JSON.stringify({Id:1,标题:2}));
+    //输出字符串 {"Id":1,"标题":2}
+    var ajax=new XMLHttpRequest;
+    ajax.open("get","/getInfo",false);
+    ajax.send();
+    var data=JSON.parse(ajax.responseText);
+	console.log(data)
+    document.querySelector( '[name="title"]').value=data.标题;
+    document.querySelector( '[name="keywords"]').value=data.关键字;
+    document.querySelector( '[name="description"]').value=data.描述;
+    document.querySelector( '.logo_img').src=data.Logo?data.Logo.replace("uploads",""):"";
+    document.querySelector( '[name="icp"]').value=data.备案号;
+    document.querySelector('[name="d1"]').value=data.客服电话号码1;
+    document.querySelector('[name="d2"]').value=data.客服电话号码2;
+    document.querySelector('[name="d3"]').value=data.公司地址;
+    document.querySelector('[name="d4"]').value=data.公司名称;
+    document.querySelector('[name="d5"]').value=data.微信号码;
+    document.querySelector('[name="d6"]').value=data.QQ号码;
+    document.querySelector('[name="d7"]').value=data.公司介绍;
+    document.querySelector('.img_2img').src=data.Logo?data.Img.replace("uploads",""):"";
+	document.querySelector('[name="old_img"]').value=data.Logo;
+	document.querySelector('[name="old_img2"]').value=data.Img;
+</script>
+</body>
+</html>

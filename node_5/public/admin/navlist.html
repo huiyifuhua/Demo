@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <style>
+        body{ font-size: 14px;}
+        table{ color: #333; width: 100%;
+            background: white;
+            border-collapse: collapse;/*让表格边框重合在一起*/
+            border:1px solid #ddd;
+        }
+        thead th{ background: #48b6f2; color:white;padding:10px 0;}
+        tbody td{padding:5px 10px;}
+        .del{
+            padding:2px 10px;
+            background:#d00;
+            color:white;
+            border:1px solid #800;
+            border-radius: 3px;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 14px;
+            margin:0 5px;
+        }
+        .edit{
+            padding:2px 10px;
+            background:#0b0;
+            color:white;
+            border:1px solid #080;
+            border-radius: 3px;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 14px;
+            margin:0 5px;
+        }
+        .del:hover,.edit:hover{
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" width="100%" >
+        <!--thead用来包含 表格头部栏目 标题部分-->
+        <thead>
+            <tr><!--th用来写 栏目标题-->
+                <th>ID</th>
+                <th>栏目名称</th>
+				<th>前端路由地址</th>
+                <th>排序</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <!--tbody用来包含 表格的内容-->
+        <tbody>
+
+        </tbody>
+    </table>
+<script>
+    //jquery版的ajax写法
+    $.ajax({
+        url:"/getNav",//请求的地址
+        method:"get",//请求的方法
+        success:function (data) {//请求成功时，后端数据由data接收
+            //jquery中的循环写法
+            $.each(data,function (K,V) {
+                //K里面包含 循环时 数组中数据的序号
+                //V里面包含 循环时 数组中的数据
+
+                //0.让栏目提交有层级的效果
+                var len=V.Path.split(",").length;
+                var str="";
+                for(var i=1;i<len;i++){
+                        str=str+"&nbsp;&nbsp;&nbsp;&nbsp;"
+                }
+
+                //1.写五列
+                var td1=$("<td align='center'>").text(V.Id);
+                var td2=$("<td>").html(str+V.Nav);
+                var td3=$("<td>").html(str+V.Url);
+                var td4=$("<td align='center'>").text(V.Sort);
+                var td5=$("<td align='center'>").text(["隐藏","显示","为顶级栏目时隐藏"][V.Status]);
+                var td6=$("<td align='center'>");
+                //2.写行
+                var tr=$("<tr>").css({opacity:V.Status==1?1:0.7});
+                //3.把五列 添加到 行中
+                tr.append(td1,td2,td3,td4,td5,td6);
+                //4.把行 添加到 页面tbody标签中
+                $("tbody").append(tr);
+                //5.写删除 与 修改按钮
+                var del=$("<a>").text("删除").prop("href","/delNav?Path="+V.Path).addClass("del");
+                var edit=$("<a>").text("修改").prop("href","/admin/updateNav.html?Path="+V.Path).addClass("edit");
+                //6.把删除 与修改按钮添加到 第五列
+                td6.append(edit,del);
+            })
+        }
+    })
+</script>
+</body>
+</html>

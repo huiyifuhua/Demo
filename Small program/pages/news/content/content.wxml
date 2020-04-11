@@ -1,0 +1,6 @@
+<!--pages/news/content/content.wxml-->
+<view class="warp">
+	<image src="{{list.Img}}"></image>
+	<rich-text>{{list.Content}}</rich-text>
+
+</view>
